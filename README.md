@@ -1,34 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Car Rental Website
+
+This project is a simple car rental website developed using Next.js 13.4. The purpose of this project is to display vehicle rental options to users and encourage them to explore potential vehicles. This site only contains the front end and does not provide any user login or backend functionality.
+
+## Features
+
+- View the list of vehicles
+- View details of vehicles
+- User-friendly and responsive design
 
 ## Getting Started
 
-First, run the development server:
+To run the project in a local development environment, you can follow the steps below.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone the repository:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   git clone https://github.com/kubilayture/car-showcase.git
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Navigate to the Project Directory**: Once the cloning process is complete, navigate to the project directory using the following command:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   ```bash
+   cd car-showcase
+   ```
 
-## Learn More
+3. **Install Dependencies**: To install the necessary dependencies for the app, run the following command:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm install
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+   Before proceeding to the next step, please make sure to create a imagin studio key for the Article Extractor and Summarizer API on RapidAPI's website. Once you have the key, you'll need to save it as an environment variable in a `.env.local` file in the project root directory.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+   ```plaintext
+   NEXT_PUBLIC_IMAGIN_API_KEY=your-imagin-key-here
+   ```
 
-## Deploy on Vercel
+4. **Run the App**: After successfully installing the dependencies, you can run the AI Summarizer locally using the following command:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   npm run dev
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Features
+
+- **Search:** Users can search for vehicles by entering the make and model in the search bar.
+
+- **Filter:** Users can filter the search results by year and fuel type.
