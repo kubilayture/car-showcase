@@ -4,6 +4,7 @@ import { SearchBar } from '@/components'
 import { CustomFilter } from '@/components'
 import { fetchCars } from '@/utils'
 import { HomeProps } from '@/types'
+import { fuels, yearsOfProduction } from '@/constants'
 
 
 export default async function Home({ searchParams }: HomeProps) { // <- next.js allows us to use async on component function!
@@ -33,8 +34,8 @@ export default async function Home({ searchParams }: HomeProps) { // <- next.js 
         <div className='home__filters'>
           <SearchBar />
           <div className='home__filter-container'>
-            <CustomFilter title='fuel' />
-            <CustomFilter title='year' />
+            <CustomFilter title='fuel' options={fuels} />
+            <CustomFilter title='year' options={yearsOfProduction} />
           </div>
         </div>
         {!isDataEmpty ? (
