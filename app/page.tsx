@@ -2,12 +2,21 @@ import Image from 'next/image'
 import { CarCard, Hero } from '@/components'
 import { SearchBar } from '@/components'
 import { CustomFilter } from '@/components'
+import { ShowMore } from '@/components'
 import { fetchCars } from '@/utils'
+import { HomeProps } from '@/types'
+import { fuels, yearsOfProduction } from '@/constants'
 
 
-export default async function Home() { // <- next.js allows us to use async on component function!
-  const allCars = await fetchCars()
-  console.log(allCars)
+export default async function Home({ searchParams }: HomeProps) { // <- next.js allows us to use async on component function!
+  const allCars = await fetchCars({
+    manufacturer: searchParams.manufacturer || '',
+    model: searchParams.model || '',
+    year: searchParams.year || 2022,
+    fuel: searchParams.fuel || '',
+    limit: searchParams.limit || 10
+  })
+
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars
 
   return (
@@ -26,8 +35,8 @@ export default async function Home() { // <- next.js allows us to use async on c
         <div className='home__filters'>
           <SearchBar />
           <div className='home__filter-container'>
-            <CustomFilter title='fuel' />
-            <CustomFilter title='year' />
+            <CustomFilter title='fuel' options={fuels} />
+            <CustomFilter title='year' options={yearsOfProduction} />
           </div>
         </div>
         {!isDataEmpty ? (
@@ -39,6 +48,10 @@ export default async function Home() { // <- next.js allows us to use async on c
                 />
               ))}
             </div>
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className='home__error-container'>
