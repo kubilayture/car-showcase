@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { CarCard, Hero } from '@/components'
 import { SearchBar } from '@/components'
 import { CustomFilter } from '@/components'
+import { ShowMore } from '@/components'
 import { fetchCars } from '@/utils'
 import { HomeProps } from '@/types'
 import { fuels, yearsOfProduction } from '@/constants'
@@ -47,6 +48,10 @@ export default async function Home({ searchParams }: HomeProps) { // <- next.js 
                 />
               ))}
             </div>
+            <ShowMore
+              pageNumber={(searchParams.limit || 10) / 10}
+              isNext={(searchParams.limit || 10) > allCars.length}
+            />
           </section>
         ) : (
           <div className='home__error-container'>
